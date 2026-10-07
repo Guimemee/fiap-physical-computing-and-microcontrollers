@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Physical Computing & Microcontrollers
+Turma 4ECS • Ano 2025
+Checkpoint 06: Projeto Integrador SmartRecycle: Prototipagem e Telemetria IoT
+
+ENUNCIADO ORIGINAL:
+Integrar os módulos de sensoriamento óptico, inteligência embarcada de triagem e transmissão segura MQTT/TLS em dispositivo IoT industrial conectado ao Gêmeo Digital SPI.

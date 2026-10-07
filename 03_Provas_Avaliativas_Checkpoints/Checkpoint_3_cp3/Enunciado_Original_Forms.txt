@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Physical Computing & Microcontrollers
+Turma 4ECS • Ano 2025
+Checkpoint 03: Barramentos de Sensores Industriais e Comunicação I2C / SPI com DMA
+
+ENUNCIADO ORIGINAL:
+Implementar leitor de sensor inercial IMU de 6 eixos (Acelerômetro + Giroscópio) via barramento SPI a 10 MHz com transferência direta por Direct Memory Access (DMA).

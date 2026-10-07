@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad_fiap_physical_computing_and_microcontrollers" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090614" />
+      <stop offset="50%" stop-color="#130d29" />
+      <stop offset="100%" stop-color="#090614" />
+    </linearGradient>
+    <linearGradient id="pGrad_fiap_physical_computing_and_microcontrollers" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <pattern id="grid_fiap_physical_computing_and_microcontrollers" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#352466" stroke-width="0.8" stroke-opacity="0.4" />
+      <circle cx="40" cy="40" r="1.5" fill="#8b5cf6" fill-opacity="0.25" />
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="520" fill="url(#bgGrad_fiap_physical_computing_and_microcontrollers)" rx="16" />
+  <rect width="1200" height="520" fill="url(#grid_fiap_physical_computing_and_microcontrollers)" rx="16" />
+  <rect width="1196" height="516" x="2" y="2" fill="none" stroke="#8b5cf6" stroke-width="1.5" stroke-opacity="0.35" rx="14" />
+
+  <path d="M 40 40 L 280 40 L 310 70 L 600 70 L 620 50 L 1160 50" fill="none" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.3" />
+  <circle cx="280" cy="40" r="3.5" fill="#3b82f6" />
+  <circle cx="600" cy="70" r="3.5" fill="#8b5cf6" />
+  <circle cx="1160" cy="50" r="4" fill="#a855f7" />
+
+  <g transform="translate(60, 85)">
+    <rect x="0" y="0" width="80" height="28" rx="6" fill="#211642" stroke="#8b5cf6" stroke-width="1.2" />
+    <text x="40" y="19" fill="#8b5cf6" font-family="-apple-system, sans-serif" font-size="13" font-weight="800" text-anchor="middle" letter-spacing="1">FIAP</text>
+    <rect x="92" y="0" width="160" height="28" rx="6" fill="#211642" stroke="#352466" stroke-width="1.2" />
+    <text x="172" y="19" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" text-anchor="middle">4ECS • 2025</text>
+    <rect x="264" y="0" width="220" height="28" rx="6" fill="#211642" stroke="#a855f7" stroke-width="1" />
+    <text x="374" y="19" fill="#a855f7" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">SPI / Metaindústria (Gêmeo Digit</text>
+  </g>
+
+  <g transform="translate(60, 160)">
+    <text x="0" y="42" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="900" letter-spacing="-0.5">PHYSICAL COMPUTING &amp; MICROCONTROLLERS</text>
+    <text x="0" y="80" fill="#a855f7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="500">Sistemas Embarcados com ESP32 Dual-Core, Sistema Operacional de Tempo Real </text>
+    <text x="0" y="105" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Bacharelado em Engenharia da Computação • Acervo Integral de Engenharia</text>
+  </g>
+
+  
+    <g transform="translate(560, 120)">
+      <rect width="270" height="76" rx="10" fill="#211642" stroke="#352466" stroke-width="1.2" />
+      <text x="16" y="24" fill="#a855f7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" letter-spacing="1">PROCESSADOR EMBARCADO</text>
+      <text x="16" y="48" fill="#ffffff" font-family="'Fira Code', monospace" font-size="16" font-weight="800">ESP32 240 MHZ</text>
+      <text x="16" y="66" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Xtensa Dual-Core 32-bit com Wi-Fi/BLE</text>
+    </g>
+    <g transform="translate(850, 120)">
+      <rect width="270" height="76" rx="10" fill="#211642" stroke="#352466" stroke-width="1.2" />
+      <text x="16" y="24" fill="#a855f7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" letter-spacing="1">RTOS MULTITASKING</text>
+      <text x="16" y="48" fill="#ffffff" font-family="'Fira Code', monospace" font-size="16" font-weight="800">FreeRTOS KERNEL</text>
+      <text x="16" y="66" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Escalonamento Preemptivo por Prioridade</text>
+    </g>
+    <g transform="translate(560, 210)">
+      <rect width="270" height="76" rx="10" fill="#211642" stroke="#352466" stroke-width="1.2" />
+      <text x="16" y="24" fill="#a855f7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" letter-spacing="1">RESOLUÇÃO PWM</text>
+      <text x="16" y="48" fill="#ffffff" font-family="'Fira Code', monospace" font-size="16" font-weight="800">16 BITS LEDC</text>
+      <text x="16" y="66" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Controle de Frequência e Duty Cycle Fino</text>
+    </g>
+    <g transform="translate(850, 210)">
+      <rect width="270" height="76" rx="10" fill="#211642" stroke="#352466" stroke-width="1.2" />
+      <text x="16" y="24" fill="#a855f7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" letter-spacing="1">BARRAMENTOS DE SENSORES</text>
+      <text x="16" y="48" fill="#ffffff" font-family="'Fira Code', monospace" font-size="16" font-weight="800">I2C, SPI &amp; CAN</text>
+      <text x="16" y="66" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Taxas de Transmissão até 40 MHz</text>
+    </g>
+
+  <g transform="translate(60, 420)">
+    <text x="0" y="0" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="1">TECNOLOGIAS &amp; METODOLOGIAS DOMINADAS:</text>
+  </g>
+  
+    <g transform="translate(60, 450)">
+      <rect width="168.5" height="28" rx="14" fill="#211642" stroke="#8b5cf6" stroke-width="1" />
+      <text x="84.25" y="18" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">⚡ ESP32 Dual-Core</text>
+    </g>
+    <g transform="translate(240.5, 450)">
+      <rect width="219.5" height="28" rx="14" fill="#211642" stroke="#8b5cf6" stroke-width="1" />
+      <text x="109.75" y="18" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">⏱️ FreeRTOS Multitarefa</text>
+    </g>
+    <g transform="translate(472.0, 450)">
+      <rect width="211.0" height="28" rx="14" fill="#211642" stroke="#8b5cf6" stroke-width="1" />
+      <text x="105.5" y="18" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">🎛️ Timers &amp; PWM 16-bit</text>
+    </g>
+    <g transform="translate(695.0, 450)">
+      <rect width="219.5" height="28" rx="14" fill="#211642" stroke="#8b5cf6" stroke-width="1" />
+      <text x="109.75" y="18" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">📡 Comunicação I2C &amp; SPI</text>
+    </g>
+    <g transform="translate(926.5, 450)">
+      <rect width="270.5" height="28" rx="14" fill="#211642" stroke="#8b5cf6" stroke-width="1" />
+      <text x="135.25" y="18" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">🔋 Modos Ultra Low Power (ULP)</text>
+    </g>
+    <g transform="translate(1209.0, 450)">
+      <rect width="143.0" height="28" rx="14" fill="#211642" stroke="#8b5cf6" stroke-width="1" />
+      <text x="71.5" y="18" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">🤖 Robótica SPI</text>
+    </g>
+</svg>

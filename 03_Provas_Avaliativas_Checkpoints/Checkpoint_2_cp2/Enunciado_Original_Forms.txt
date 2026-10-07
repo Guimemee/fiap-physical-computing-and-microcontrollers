@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Physical Computing & Microcontrollers
+Turma 4ECS • Ano 2025
+Checkpoint 02: Timers de Hardware e Modulação por Largura de Pulso (PWM de Alta Resolução)
+
+ENUNCIADO ORIGINAL:
+Dimensionar o periférico LEDC PWM do ESP32 com resolução de 14 bits na frequência de 5 kHz para controle de velocidade e posicionamento angular suave de atuadores robóticos.

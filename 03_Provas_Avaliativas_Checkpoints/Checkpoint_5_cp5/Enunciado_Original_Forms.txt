@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Physical Computing & Microcontrollers
+Turma 4ECS • Ano 2025
+Checkpoint 05: Sistemas Operacionais de Tempo Real: FreeRTOS no ESP32 Dual-Core
+
+ENUNCIADO ORIGINAL:
+Desenvolver aplicação multitarefa preemptiva no FreeRTOS com xTaskCreatePinnedToCore() distribuindo tarefas de controle crítico no Core 0 e conectividade Wi-Fi no Core 1 com filas de mensagens (Queues) e semáforos binários.

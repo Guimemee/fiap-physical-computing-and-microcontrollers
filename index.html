@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIAP • Physical Computing & Microcontrollers | Turma 4ECS • 2025</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+  <style>
+    :root {
+      --bg-dark: #090614;
+      --bg-card: #130d29;
+      --bg-surface: #211642;
+      --border: #352466;
+      --text-main: #f3f4f6;
+      --text-muted: #94a3b8;
+      --primary: #8b5cf6;
+      --secondary: #3b82f6;
+      --accent: #a855f7;
+      --radius: 12px;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'Fira Code', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      padding-top: 80px;
+    }
+
+    [id] { scroll-margin-top: 95px; }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(10, 14, 23, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 10px 24px;
+    }
+
+    .header-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .header-row-1 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .header-row-1 .brand-fiap {
+      color: var(--primary);
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .header-row-2 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .turma-tag {
+      font-size: 0.82rem;
+      line-height: 1.3;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.12);
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .btn-repo-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      line-height: 1.3;
+      font-weight: 700;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      padding: 5px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .btn-repo-top:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
+      filter: brightness(1.1);
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero-banner {
+      margin-bottom: 32px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .hero-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 4px; height: 100%;
+      background: var(--primary);
+    }
+
+    .metric-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .metric-val {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .metric-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-item {
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      border: 1px solid var(--border);
+    }
+
+    .nav-item:hover, .nav-item:focus {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .cp-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+
+    .section-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--primary);
+      background: rgba(56, 189, 248, 0.1);
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+
+    .problem-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .box-header {
+      background: rgba(255,255,255,0.03);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+    }
+
+    .copy-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .box-content {
+      padding: 20px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #e2e8f0;
+    }
+
+    .formula-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .formula-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .formula-latex {
+      font-size: 1.2rem;
+      color: #ffffff;
+      overflow-x: auto;
+      padding: 8px 0;
+    }
+
+    .symbolab-container {
+      margin-bottom: 28px;
+    }
+
+    .symbolab-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      transition: transform 0.2s ease;
+    }
+
+    .step-card:hover {
+      transform: translateX(4px);
+      border-color: var(--primary);
+    }
+
+    .step-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .step-content p {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
+
+    .plot-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .plot-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+    }
+
+    .plot-img-container {
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+      background: #00000022;
+    }
+
+    .plot-img-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 32px 24px;
+      text-align: center;
+      margin-top: 60px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 8px 16px;
+      }
+      .header-row-1 {
+        font-size: 0.95rem;
+      }
+      .turma-tag {
+        font-size: 0.78rem;
+        padding: 2px 8px;
+      }
+      .btn-repo-top {
+        font-size: 0.78rem;
+        padding: 4px 10px;
+      }
+      body {
+        padding-top: 75px;
+      }
+      .container {
+        padding: 16px;
+      }
+      .cp-section {
+        padding: 20px 16px;
+      }
+      .section-title {
+        font-size: 1.25rem;
+      }
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="header-row-1">
+        <span class="brand-fiap">FIAP</span> • Engenharia da Computação
+      </div>
+      <div class="header-row-2">
+        <span class="turma-tag">TURMA 4ECS • 2025</span>
+        <a href="https://github.com/Guimemee/fiap-physical-computing-and-microcontrollers" class="btn-repo-top" target="_blank" rel="noopener">
+          <span>Ver Repositório</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="hero-banner">
+      <img src="card_technologies.svg" alt="FIAP • Physical Computing & Microcontrollers - 4ECS 2025" />
+    </div>
+
+    <div class="metrics-grid">
+      
+        <div class="metric-card">
+          <div class="metric-label">PROCESSADOR EMBARCADO</div>
+          <div class="metric-val">ESP32 240 MHZ</div>
+          <div class="metric-sub">Xtensa Dual-Core 32-bit com Wi-Fi/BLE</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">RTOS MULTITASKING</div>
+          <div class="metric-val">FreeRTOS KERNEL</div>
+          <div class="metric-sub">Escalonamento Preemptivo por Prioridade</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">RESOLUÇÃO PWM</div>
+          <div class="metric-val">16 BITS LEDC</div>
+          <div class="metric-sub">Controle de Frequência e Duty Cycle Fino</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">BARRAMENTOS DE SENSORES</div>
+          <div class="metric-val">I2C, SPI & CAN</div>
+          <div class="metric-sub">Taxas de Transmissão até 40 MHz</div>
+        </div>
+    </div>
+
+    <nav class="nav-tabs" aria-label="Navegação de Checkpoints">
+      <a href="#cp1" class="nav-item">CP1</a><a href="#cp2" class="nav-item">CP2</a><a href="#cp3" class="nav-item">CP3</a><a href="#cp4" class="nav-item">CP4</a><a href="#cp5" class="nav-item">CP5</a><a href="#cp6" class="nav-item">CP6</a>
+    </nav>
+
+    
+      <section id="cp1" class="cp-section">
+        <div class="section-badge">CHECKPOINT 01 • 4ECS 2025</div>
+        <h2 class="section-title">Arquitetura Interna do ESP32, Matriz de GPIOs e Registradores</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp1')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp1" class="box-content">
+            <p>Configurar e manipular diretamente registradores de GPIO (GPIO_OUT_REG, GPIO_ENABLE_REG) no ESP32 para acionamento de atuadores industriais sem overhead de funções HAL.</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$\text{REG\_WRITE}(\text{GPIO\_OUT\_W1TS\_REG}, 1 \ll \text{PIN}), \quad \text{REG\_WRITE}(\text{GPIO\_OUT\_W1TC\_REG}, 1 \ll \text{PIN})$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Acesso Atômico a Registradores W1TS e W1TC</span>
+              </div>
+              <div class="step-content">
+                <p>Uso de Write-1-to-Set e Write-1-to-Clear para alternar pinos sem necessidade de operações de leitura-modificação-escrita.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Configuração da Matriz de E/S (GPIO Matrix)</span>
+              </div>
+              <div class="step-content">
+                <p>Mapeamento flexível de periféricos internos para qualquer pino físico do encapsulamento.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Resistores Internos de Pull-Up / Pull-Down</span>
+              </div>
+              <div class="step-content">
+                <p>Ativação de pull-ups integrados de 45 k\Omega em pinos de entrada conectados a sensores ópticos.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Medição de Frequência Máxima de Toggle</span>
+              </div>
+              <div class="step-content">
+                <p>O acesso direto a registradores atingiu 24 MHz de alternância contra apenas 1,8 MHz usando digitalWrite() convencional.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão de Performance</span>
+              </div>
+              <div class="step-content">
+                <p>Controle determinístico de baixa latência adequado para pulsos de clock rápidos.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_1_cp1/grafico_resolucao.png" alt="Gráfico Arquitetura Interna do ESP32, Matriz de GPIOs e Registradores" loading="lazy" />
+          </div>
+        </div>
+      </section>
+      <section id="cp2" class="cp-section">
+        <div class="section-badge">CHECKPOINT 02 • 4ECS 2025</div>
+        <h2 class="section-title">Timers de Hardware e Modulação por Largura de Pulso (PWM de Alta Resolução)</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp2')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp2" class="box-content">
+            <p>Dimensionar o periférico LEDC PWM do ESP32 com resolução de 14 bits na frequência de 5 kHz para controle de velocidade e posicionamento angular suave de atuadores robóticos.</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$f_{PWM} = \frac{f_{clock}}{Prescaler \times 2^{\text{Resolution}}}, \quad 5000 = \frac{80.000.000}{1 \times 2^{14}} = \frac{80.000.000}{16384} \approx 4882,8 \text{ Hz}$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Clock Base do Periférico (APB Clock 80 MHz)</span>
+              </div>
+              <div class="step-content">
+                <p>Seleção de fonte de clock estável independente de flutuações de CPU.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Definição de Resolução de 14 Bits (16.384 Níveis)</span>
+              </div>
+              <div class="step-content">
+                <p>Permite controle fino de Duty Cycle de 0 a 100% com incremento de apenas 0,0061%.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Geração de Fade Hardware Automático</span>
+              </div>
+              <div class="step-content">
+                <p>Uso da função ledc_set_fade_with_time() para transições angulares suaves sem consumir processamento do núcleo.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Proteção contra Emissão Eletromagnética</span>
+              </div>
+              <div class="step-content">
+                <p>Frequência calibrada em 5 kHz eliminando ruídos audíveis em bobinas e atuadores.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão Mecatrônica</span>
+              </div>
+              <div class="step-content">
+                <p>Movimentação do braço robótico com resolução micrométrica sem vibrações residuais.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_2_cp2/grafico_resolucao.png" alt="Gráfico Timers de Hardware e Modulação por Largura de Pulso (PWM de Alta Resolução)" loading="lazy" />
+          </div>
+        </div>
+      </section>
+      <section id="cp3" class="cp-section">
+        <div class="section-badge">CHECKPOINT 03 • 4ECS 2025</div>
+        <h2 class="section-title">Barramentos de Sensores Industriais e Comunicação I2C / SPI com DMA</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp3')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp3" class="box-content">
+            <p>Implementar leitor de sensor inercial IMU de 6 eixos (Acelerômetro + Giroscópio) via barramento SPI a 10 MHz com transferência direta por Direct Memory Access (DMA).</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$\text{Taxa SPI} = 10 \text{ MHz}, \quad T_{\text{leitura 14 bytes}} = \frac{14 \times 8}{10 \times 10^6} = 11,2 \, \mu\text{s}$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Transmissão por DMA sem Interrupção da CPU</span>
+              </div>
+              <div class="step-content">
+                <p>O controlador SPI-DMA preenche o buffer na memória SRAM de forma totalmente autônoma.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Configuração de Modo SPI (CPOL = 0, CPHA = 0)</span>
+              </div>
+              <div class="step-content">
+                <p>Amostragem de dados na borda de subida do sinal de clock SCLK.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Fusão Sensorial com Filtro Complementar</span>
+              </div>
+              <div class="step-content">
+                <p>\theta = 0,98(\theta + \omega dt) + 0,02 \theta_{acc} para estimativa robusta de ângulo sem deriva (drift).</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Interrupção por FIFO Watermark</span>
+              </div>
+              <div class="step-content">
+                <p>O sensor gera interrupção de hardware apenas quando o buffer interno acumula 32 amostras prontas.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão Metrológica</span>
+              </div>
+              <div class="step-content">
+                <p>Taxa de amostragem de 1 kHz com menos de 1,2% de carga de processamento na CPU.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_3_cp3/grafico_resolucao.png" alt="Gráfico Barramentos de Sensores Industriais e Comunicação I2C / SPI com DMA" loading="lazy" />
+          </div>
+        </div>
+      </section>
+      <section id="cp4" class="cp-section">
+        <div class="section-badge">CHECKPOINT 04 • 4ECS 2025</div>
+        <h2 class="section-title">Conversão Analógico-Digital (ADC) com Calibração de Não-Linearidade</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp4')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp4" class="box-content">
+            <p>Calcular a curva de calibração polinomial para compensar a não-linearidade do ADC de 12 bits do ESP32 utilizando as tensões de referência internas eFuse Vref.</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$V_{real} = a \cdot ADC^2 + b \cdot ADC + c, \quad \text{Erro Residual} < 0,5\%$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Caracterização das Zonas de Não-Linearidade</span>
+              </div>
+              <div class="step-content">
+                <p>Identificação das saturações próximas de 0 V (abaixo de 0,1 V) e acima de 3,1 V.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Leitura das Constantes de Fábrica nos eFuses</span>
+              </div>
+              <div class="step-content">
+                <p>esp_adc_cal_characterize() recupera o ponto de calibração Two Point gravado na fábrica.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Média Móvel de Múltiplas Amostragens (Multisampling)</span>
+              </div>
+              <div class="step-content">
+                <p>Acumulação de 64 leituras sucessivas para elevar a relação sinal-ruído e eliminar jitter.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Aplicação da Tabela de Lookup e Polinômio</span>
+              </div>
+              <div class="step-content">
+                <p>Mapeamento linear em milivolts na faixa de 100 mV a 3100 mV.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão Calibrada</span>
+              </div>
+              <div class="step-content">
+                <p>Erro máximo de medição reduzido de ±120 mV para menos de ±6 mV em toda a faixa de sensores.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_4_cp4/grafico_resolucao.png" alt="Gráfico Conversão Analógico-Digital (ADC) com Calibração de Não-Linearidade" loading="lazy" />
+          </div>
+        </div>
+      </section>
+      <section id="cp5" class="cp-section">
+        <div class="section-badge">CHECKPOINT 05 • 4ECS 2025</div>
+        <h2 class="section-title">Sistemas Operacionais de Tempo Real: FreeRTOS no ESP32 Dual-Core</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp5')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp5" class="box-content">
+            <p>Desenvolver aplicação multitarefa preemptiva no FreeRTOS com xTaskCreatePinnedToCore() distribuindo tarefas de controle crítico no Core 0 e conectividade Wi-Fi no Core 1 com filas de mensagens (Queues) e semáforos binários.</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$\text{Core 0 (Controle)}: \text{TaskPID (Prioridade 5)}, \quad \text{Core 1 (Rede)}: \text{TaskMQTT (Prioridade 2)}$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Fixação de Tarefas por Afinidade de Núcleo (Core Pinning)</span>
+              </div>
+              <div class="step-content">
+                <p>xTaskCreatePinnedToCore() isola a malha de controle PID no Core 0 livre de interrupções de pilha Wi-Fi.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Filas de Mensagens (xQueueSend / xQueueReceive)</span>
+              </div>
+              <div class="step-content">
+                <p>Buffer FIFO protegido entre tarefas prevenindo acessos concorrentes a dados de telemetria.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Notificações Diretas entre Tarefas (Task Notifications)</span>
+              </div>
+              <div class="step-content">
+                <p>Sincronização ultrarrápida com xTaskNotifyGive() com sobrecarga 45% menor que semáforos.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Monitoramento de Stack High Water Mark</span>
+              </div>
+              <div class="step-content">
+                <p>uxTaskGetStackHighWaterMark() para assegurar que nenhuma tarefa sofra estouro de pilha (Stack Overflow).</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão de Multitarefa</span>
+              </div>
+              <div class="step-content">
+                <p>Estabilidade perfeita com latência de resposta a interrupções (ISR latency) inferior a 2,5 \mu\text{s}.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_5_cp5/grafico_resolucao.png" alt="Gráfico Sistemas Operacionais de Tempo Real: FreeRTOS no ESP32 Dual-Core" loading="lazy" />
+          </div>
+        </div>
+      </section>
+      <section id="cp6" class="cp-section">
+        <div class="section-badge">CHECKPOINT 06 • 4ECS 2025</div>
+        <h2 class="section-title">Projeto Integrador SmartRecycle: Prototipagem e Telemetria IoT</h2>
+        
+        <div class="problem-box">
+          <div class="box-header">
+            <span>📋 ENUNCIADO ORIGINAL DA AVALIAÇÃO</span>
+            <button class="copy-btn" onclick="copyText('prob-cp6')">Copiar Enunciado</button>
+          </div>
+          <div id="prob-cp6" class="box-content">
+            <p>Integrar os módulos de sensoriamento óptico, inteligência embarcada de triagem e transmissão segura MQTT/TLS em dispositivo IoT industrial conectado ao Gêmeo Digital SPI.</p>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-title">📐 MODELAGEM MATEMÁTICA &amp; FORMULAÇÃO FORMAL</div>
+          <div class="formula-latex">$$\text{Dispositivo SmartRecycle} \xrightarrow{\text{MQTT / MQTTS (Porta 8883)}} \text{Broker AWS IoT Core} \to \text{Gêmeo Digital}$$</div>
+        </div>
+
+        <div class="symbolab-container">
+          <h3 class="symbolab-title">💎 Resolução Algébrica Passo a Passo (Padrão Symbolab)</h3>
+          
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 1: Autenticação Mútua mTLS com Certificados X.509</span>
+              </div>
+              <div class="step-content">
+                <p>Armazenamento seguro de chaves privadas em partição NVS criptografada.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 2: Protocolo Leve de Publicação MQTT QoS 1</span>
+              </div>
+              <div class="step-content">
+                <p>Garantia de entrega pelo menos uma vez de telemetria de classificação de recicláveis.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 3: Modo de Economia de Energia com ULP Co-Processor</span>
+              </div>
+              <div class="step-content">
+                <p>O coprocessador ULP monitora o sensor de presença em modo Deep Sleep consumindo apenas 15 \mu\text{A}.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 4: Atualização de Firmware Over-The-Air (OTA)</span>
+              </div>
+              <div class="step-content">
+                <p>Mecanismo de boot duplo com partição de rollback automático em caso de falha de inicialização.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-tag">Passo 5: Conclusão do Desafio SPI</span>
+              </div>
+              <div class="step-content">
+                <p>Dispositivo industrial homologado em campo com taxa de triagem de 120 peças por minuto.</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="plot-box">
+          <div class="box-header">
+            <span>📊 GRÁFICO COMPUTACIONAL &amp; VISUALIZAÇÃO DE RESULTADOS</span>
+            <span class="plot-tag">Matplotlib • Alta Resolução</span>
+          </div>
+          <div class="plot-img-container">
+            <img src="03_Provas_Avaliativas_Checkpoints/Checkpoint_6_cp6/grafico_resolucao.png" alt="Gráfico Projeto Integrador SmartRecycle: Prototipagem e Telemetria IoT" loading="lazy" />
+          </div>
+        </div>
+      </section>
+  </main>
+
+  <footer>
+    <p><strong>FIAP • Faculdade de Informática e Administração Paulista</strong></p>
+    <p>Bacharelado em Engenharia da Computação • Turma 4ECS (2025) • Desafio: SPI / Metaindústria (Gêmeo Digital & Células Robóticas)</p>
+    <p>Acervo mantido por <a href="https://github.com/Guimemee" target="_blank" rel="noopener">Guilherme Macário da Silva (@Guimemee)</a></p>
+  </footer>
+
+  <script>
+    function copyText(elementId) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const text = el.innerText || el.textContent;
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert('Enunciado copiado com sucesso para a área de transferência!');
+        }).catch(err => fallbackCopy(text));
+      } else {
+        fallbackCopy(text);
+      }
+
+      function fallbackCopy(val) {
+        const ta = document.createElement('textarea');
+        ta.value = val;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        alert('Enunciado copiado!');
+      }
+    }
+  </script>
+</body>
+</html>

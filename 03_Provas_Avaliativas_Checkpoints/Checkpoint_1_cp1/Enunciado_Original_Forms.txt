@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Physical Computing & Microcontrollers
+Turma 4ECS • Ano 2025
+Checkpoint 01: Arquitetura Interna do ESP32, Matriz de GPIOs e Registradores
+
+ENUNCIADO ORIGINAL:
+Configurar e manipular diretamente registradores de GPIO (GPIO_OUT_REG, GPIO_ENABLE_REG) no ESP32 para acionamento de atuadores industriais sem overhead de funções HAL.

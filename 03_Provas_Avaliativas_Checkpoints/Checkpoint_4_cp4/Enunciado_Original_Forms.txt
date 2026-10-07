@@ -1,0 +1,7 @@
+FIAP • Engenharia da Computação
+Disciplina: Physical Computing & Microcontrollers
+Turma 4ECS • Ano 2025
+Checkpoint 04: Conversão Analógico-Digital (ADC) com Calibração de Não-Linearidade
+
+ENUNCIADO ORIGINAL:
+Calcular a curva de calibração polinomial para compensar a não-linearidade do ADC de 12 bits do ESP32 utilizando as tensões de referência internas eFuse Vref.
